@@ -23,9 +23,67 @@ export default function AccordionUsage() {
   const classes = useStyles();
 
   // useState hook
-  const [name, setName] = useState('');
-  const [role, setRole] = useState('');
-  const [team, setTeam] = useState(1);
+  const [name, setName] = useState("");
+  const [role, setRole] = useState("");
+  const [team, setTeam] = useState(0);
+  const [players, setPlayers] = useState([]);
+
+  // function to handle button click and add a player
+  const addPlayer = (e) => {
+    e.preventDefault();
+    const player = { name, role };
+    console.log(player);
+    if (team === 1) {
+      fetch("http://localhost:8080/bcl/bandits/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(player),
+      }).then(() => {
+        alert("Player added successfully!");
+      });
+    } else if (team === 2) {
+      fetch("http://localhost:8080/bcl/bulls/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(player),
+      }).then(() => {
+        alert("Player added successfully!");
+      });
+    } else if (team === 3) {
+      fetch("http://localhost:8080/bcl/royals/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(player),
+      }).then(() => {
+        alert("Player added successfully!");
+      });
+    } else if (team === 4) {
+      fetch("http://localhost:8080/bcl/cobras/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(player),
+      }).then(() => {
+        alert("Player added successfully!");
+      });
+    } else if (team === 5) {
+      fetch("http://localhost:8080/bcl/stallions/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(player),
+      }).then(() => {
+        alert("Player added successfully!");
+      });
+    }
+    else
+    {
+        alert("Invalid team choice!");
+    }
+  };
+
+  // function to handle a button click for clearing the form fields
+  const clearForm = () => {
+    document.getElementById("player-form").reset();
+  }
 
   return (
     <div style={{ margin: "15px", padding: "5px" }}>
@@ -40,8 +98,8 @@ export default function AccordionUsage() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Container style={{color:'white'}}>
-            <form className={classes.root} noValidate autoComplete="off">
+          <Container style={{ color: "white" }}>
+            <form className={classes.root} id="player-form" noValidate autoComplete="off">
               <TextField
                 id="outlined-basic"
                 label="Player Name"
@@ -69,13 +127,20 @@ export default function AccordionUsage() {
                 <MenuItem value={5}>Benrec Stallions</MenuItem>
               </Select>
             </form>
-            
           </Container>
         </AccordionDetails>
         <AccordionActions>
+        <Button
+            style={{ margin: "10px", padding: "5px" }}
+            variant="contained"
+            onClick={clearForm}
+          >
+            CLEAR
+          </Button>
           <Button
             style={{ margin: "10px", padding: "5px" }}
             variant="contained"
+            onClick={addPlayer}
           >
             ADD
           </Button>
