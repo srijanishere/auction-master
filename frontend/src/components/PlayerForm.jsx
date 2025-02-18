@@ -19,7 +19,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Stack from "@mui/material/Stack";
 import Paper from "@mui/material/Paper";
-import Tooltip from '@mui/joy/Tooltip';
+import Tooltip from "@mui/joy/Tooltip";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,7 +36,7 @@ export default function AccordionUsage() {
   const [role, setRole] = useState("");
   const [team, setTeam] = useState(0);
   const [bandits, setBandits] = useState([]);
-  const [bull, setBulls] = useState([]);
+  const [bulls, setBulls] = useState([]);
   const [cobras, setCobras] = useState([]);
   const [stallions, setStallions] = useState([]);
   const [royals, setRoyals] = useState([]);
@@ -47,6 +47,43 @@ export default function AccordionUsage() {
   const [royalsAmount, setRoyalsAmount] = useState(10000);
   const [amount, setAmount] = useState(0);
 
+  // useEffect hook
+  useEffect(() => {
+    // fetch all Bandits players
+    fetch("http://localhost:8080/bcl/bandits/getAll")
+      .then((response) => response.json())
+      .then((response) => {
+        setBandits(response);
+      });
+
+    // fetch all Bulls players
+    fetch("http://localhost:8080/bcl/bulls/getAll")
+      .then((response) => response.json())
+      .then((response) => {
+        setBulls(response);
+      });
+
+    // fetch all Cobras players
+    fetch("http://localhost:8080/bcl/cobras/getAll")
+      .then((response) => response.json())
+      .then((response) => {
+        setCobras(response);
+      });
+
+    // fetch all Stallions players
+    fetch("http://localhost:8080/bcl/stallions/getAll")
+      .then((response) => response.json())
+      .then((response) => {
+        setStallions(response);
+      });
+
+    // fetch all Royals players
+    fetch("http://localhost:8080/bcl/royals/getAll")
+      .then((response) => response.json())
+      .then((response) => {
+        setRoyals(response);
+      });
+  }, []);
 
   // function to handle button click and add a player
   const addPlayer = (e) => {
@@ -60,6 +97,7 @@ export default function AccordionUsage() {
         body: JSON.stringify(player),
       }).then(() => {
         alert("Player added successfully!");
+        location.reload();
       });
       setBanditsAmount(banditsAmount - amount);
     } else if (team === 2) {
@@ -69,6 +107,7 @@ export default function AccordionUsage() {
         body: JSON.stringify(player),
       }).then(() => {
         alert("Player added successfully!");
+        location.reload();
       });
       setBullsAmount(bullsAmount - amount);
     } else if (team === 3) {
@@ -78,6 +117,7 @@ export default function AccordionUsage() {
         body: JSON.stringify(player),
       }).then(() => {
         alert("Player added successfully!");
+        location.reload();
       });
       setRoyalsAmount(royalsAmount - amount);
     } else if (team === 4) {
@@ -87,6 +127,7 @@ export default function AccordionUsage() {
         body: JSON.stringify(player),
       }).then(() => {
         alert("Player added successfully!");
+        location.reload();
       });
       setCobrasAmount(cobrasAmount - amount);
     } else if (team === 5) {
@@ -197,9 +238,18 @@ export default function AccordionUsage() {
               <TableContainer component={Paper}>
                 <h4>Benrec Bandits</h4>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <caption>
+                  <caption>
                     <Tooltip title="Amount remaining" variant="plain">
-                      <Button variant="plain" style={{fontWeight:'bolder',fontSize:'20px', color:'red'}}>Total : {banditsAmount}</Button>
+                      <Button
+                        variant="plain"
+                        style={{
+                          fontWeight: "bolder",
+                          fontSize: "20px",
+                          color: "red",
+                        }}
+                      >
+                        Total : {banditsAmount}
+                      </Button>
                     </Tooltip>
                   </caption>
                   <TableHead>
@@ -212,7 +262,21 @@ export default function AccordionUsage() {
                       </TableCell>
                     </TableRow>
                   </TableHead>
-                  <TableBody></TableBody>
+                  <TableBody>
+                    {bandits.map((bandit) => (
+                      <TableRow
+                        key={bandit.name}
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                      >
+                        <TableCell component="th" scope="row">
+                          {bandit.name}
+                        </TableCell>
+                        <TableCell align="right">{bandit.role}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
                 </Table>
               </TableContainer>
               <TableContainer component={Paper}>
@@ -220,7 +284,16 @@ export default function AccordionUsage() {
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <caption>
                     <Tooltip title="Amount remaining" variant="plain">
-                      <Button variant="plain" style={{fontWeight:'bolder',fontSize:'20px', color:'red'}}>Total : {bullsAmount}</Button>
+                      <Button
+                        variant="plain"
+                        style={{
+                          fontWeight: "bolder",
+                          fontSize: "20px",
+                          color: "red",
+                        }}
+                      >
+                        Total : {bullsAmount}
+                      </Button>
                     </Tooltip>
                   </caption>
                   <TableHead>
@@ -233,7 +306,21 @@ export default function AccordionUsage() {
                       </TableCell>
                     </TableRow>
                   </TableHead>
-                  <TableBody></TableBody>
+                  <TableBody>
+                    {bulls.map((bull) => (
+                      <TableRow
+                        key={bull.name}
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                      >
+                        <TableCell component="th" scope="row">
+                          {bull.name}
+                        </TableCell>
+                        <TableCell align="right">{bull.role}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
                 </Table>
               </TableContainer>
             </Stack>
@@ -241,9 +328,18 @@ export default function AccordionUsage() {
               <TableContainer component={Paper}>
                 <h4>Benrec Royals</h4>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <caption>
+                  <caption>
                     <Tooltip title="Amount remaining" variant="plain">
-                      <Button variant="plain" style={{fontWeight:'bolder',fontSize:'20px', color:'red'}}>Total : {royalsAmount}</Button>
+                      <Button
+                        variant="plain"
+                        style={{
+                          fontWeight: "bolder",
+                          fontSize: "20px",
+                          color: "red",
+                        }}
+                      >
+                        Total : {royalsAmount}
+                      </Button>
                     </Tooltip>
                   </caption>
                   <TableHead>
@@ -256,15 +352,38 @@ export default function AccordionUsage() {
                       </TableCell>
                     </TableRow>
                   </TableHead>
-                  <TableBody></TableBody>
+                  <TableBody>
+                    {royals.map((royal) => (
+                      <TableRow
+                        key={royal.name}
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                      >
+                        <TableCell component="th" scope="row">
+                          {royal.name}
+                        </TableCell>
+                        <TableCell align="right">{royal.role}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
                 </Table>
               </TableContainer>
               <TableContainer component={Paper}>
                 <h4>Benrec Spitting Cobras</h4>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <caption>
+                  <caption>
                     <Tooltip title="Amount remaining" variant="plain">
-                      <Button variant="plain" style={{fontWeight:'bolder',fontSize:'20px', color:'red'}}>Total : {cobrasAmount}</Button>
+                      <Button
+                        variant="plain"
+                        style={{
+                          fontWeight: "bolder",
+                          fontSize: "20px",
+                          color: "red",
+                        }}
+                      >
+                        Total : {cobrasAmount}
+                      </Button>
                     </Tooltip>
                   </caption>
                   <TableHead>
@@ -277,27 +396,66 @@ export default function AccordionUsage() {
                       </TableCell>
                     </TableRow>
                   </TableHead>
-                  <TableBody></TableBody>
+                  <TableBody>
+                    {cobras.map((cobra) => (
+                      <TableRow
+                        key={cobra.name}
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                      >
+                        <TableCell component="th" scope="row">
+                          {cobra.name}
+                        </TableCell>
+                        <TableCell align="right">{cobra.role}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
                 </Table>
               </TableContainer>
             </Stack>
             <TableContainer component={Paper}>
               <h4>Benrec Stallion</h4>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <caption>
-                    <Tooltip title="Amount remaining" variant="plain">
-                      <Button variant="plain" style={{fontWeight:'bolder',fontSize:'20px', color:'red'}}>Total : {stallionsAmount}</Button>
-                    </Tooltip>
-                  </caption>
+                <caption>
+                  <Tooltip title="Amount remaining" variant="plain">
+                    <Button
+                      variant="plain"
+                      style={{
+                        fontWeight: "bolder",
+                        fontSize: "20px",
+                        color: "red",
+                      }}
+                    >
+                      Total : {stallionsAmount}
+                    </Button>
+                  </Tooltip>
+                </caption>
                 <TableHead>
                   <TableRow>
-                    <TableCell style={{ fontWeight: "bolder" }}>Player</TableCell>
+                    <TableCell style={{ fontWeight: "bolder" }}>
+                      Player
+                    </TableCell>
                     <TableCell align="right" style={{ fontWeight: "bolder" }}>
                       Role
                     </TableCell>
                   </TableRow>
                 </TableHead>
-                <TableBody></TableBody>
+                <TableBody>
+                  {stallions.map((stallion) => (
+                    <TableRow
+                      key={stallion.name}
+                      sx={{
+                        "&:last-child td, &:last-child th": { border: 0 },
+                      }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {stallion.name}
+                      </TableCell>
+                      <TableCell align="right">{stallion.role}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
               </Table>
             </TableContainer>
           </Stack>
