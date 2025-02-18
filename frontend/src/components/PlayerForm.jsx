@@ -198,8 +198,8 @@ export default function AccordionUsage() {
                 <h4>Benrec Bandits</h4>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <caption>
-                    <Tooltip title="Delete" variant="plain">
-                      <Button variant="plain">Total : {banditsAmount}</Button>
+                    <Tooltip title="Amount remaining" variant="plain">
+                      <Button variant="plain" style={{fontWeight:'bolder',fontSize:'20px', color:'red'}}>Total : {banditsAmount}</Button>
                     </Tooltip>
                   </caption>
                   <TableHead>
@@ -219,8 +219,8 @@ export default function AccordionUsage() {
                 <h4>Benrec Big Bulls</h4>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <caption>
-                    <Tooltip title="Delete" variant="plain">
-                      <Button variant="plain">Total : {bullsAmount}</Button>
+                    <Tooltip title="Amount remaining" variant="plain">
+                      <Button variant="plain" style={{fontWeight:'bolder',fontSize:'20px', color:'red'}}>Total : {bullsAmount}</Button>
                     </Tooltip>
                   </caption>
                   <TableHead>
@@ -242,8 +242,8 @@ export default function AccordionUsage() {
                 <h4>Benrec Royals</h4>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <caption>
-                    <Tooltip title="Delete" variant="plain">
-                      <Button variant="plain">Total : {royalsAmount}</Button>
+                    <Tooltip title="Amount remaining" variant="plain">
+                      <Button variant="plain" style={{fontWeight:'bolder',fontSize:'20px', color:'red'}}>Total : {royalsAmount}</Button>
                     </Tooltip>
                   </caption>
                   <TableHead>
@@ -263,8 +263,8 @@ export default function AccordionUsage() {
                 <h4>Benrec Spitting Cobras</h4>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <caption>
-                    <Tooltip title="Delete" variant="plain">
-                      <Button variant="plain">Total : {cobrasAmount}</Button>
+                    <Tooltip title="Amount remaining" variant="plain">
+                      <Button variant="plain" style={{fontWeight:'bolder',fontSize:'20px', color:'red'}}>Total : {cobrasAmount}</Button>
                     </Tooltip>
                   </caption>
                   <TableHead>
@@ -285,8 +285,8 @@ export default function AccordionUsage() {
               <h4>Benrec Stallion</h4>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <caption>
-                    <Tooltip title="Delete" variant="plain">
-                      <Button variant="plain">Total : {stallionsAmount}</Button>
+                    <Tooltip title="Amount remaining" variant="plain">
+                      <Button variant="plain" style={{fontWeight:'bolder',fontSize:'20px', color:'red'}}>Total : {stallionsAmount}</Button>
                     </Tooltip>
                   </caption>
                 <TableHead>
