@@ -222,7 +222,7 @@ export default function AccordionUsage() {
   };
 
   return (
-    <div style={{ margin: "15px", padding: "5px" }}>
+    <div style={{ marginTop: "70px", padding: "5px" }}>
       <Accordion>
         <AccordionSummary
           expandIcon={<ArrowDownwardIcon />}

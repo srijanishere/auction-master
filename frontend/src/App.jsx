@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="App">
-      <AppBar pos="static" bgColor="black" description="BCL SEASON - 4 AUCTION (2025)"/>
+      <AppBar pos="fixed" bgColor="black"/>
       <PlayerForm />
     </div>
   )
