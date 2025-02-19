@@ -40,11 +40,11 @@ export default function AccordionUsage() {
   const [cobras, setCobras] = useState([]);
   const [stallions, setStallions] = useState([]);
   const [royals, setRoyals] = useState([]);
-  const [banditsAmount, setBanditsAmount] = useState(10000);
-  const [bullsAmount, setBullsAmount] = useState(10000);
-  const [cobrasAmount, setCobrasAmount] = useState(10000);
-  const [stallionsAmount, setStallionsAmount] = useState(10000);
-  const [royalsAmount, setRoyalsAmount] = useState(10000);
+  const [banditsAmount, setBanditsAmount] = useState(0);
+  const [bullsAmount, setBullsAmount] = useState(0);
+  const [cobrasAmount, setCobrasAmount] = useState(0);
+  const [stallionsAmount, setStallionsAmount] = useState(0);
+  const [royalsAmount, setRoyalsAmount] = useState(0);
   const [amount, setAmount] = useState(0);
 
   // useEffect hook
@@ -83,6 +83,42 @@ export default function AccordionUsage() {
       .then((response) => {
         setRoyals(response);
       });
+
+    // fetch credit record for Bandits
+    fetch("http://localhost:8080/bcl/credit/get/1")
+      .then((response) => response.json())
+      .then((response) => {
+        setBanditsAmount(response["balance"])
+      })
+
+    // fetch credit record for Big Bulls
+    fetch("http://localhost:8080/bcl/credit/get/2")
+      .then((response) => response.json())
+      .then((response) => {
+        setBullsAmount(response["balance"])
+      })
+
+    // fetch credit record for Royals
+    fetch("http://localhost:8080/bcl/credit/get/3")
+      .then((response) => response.json())
+      .then((response) => {
+        setRoyalsAmount(response["balance"])
+      })
+
+    // fetch credit record for Cobras
+    fetch("http://localhost:8080/bcl/credit/get/4")
+      .then((response) => response.json())
+      .then((response) => {
+        setCobrasAmount(response["balance"])
+      })
+
+    // fetch credit record for Stallions
+    fetch("http://localhost:8080/bcl/credit/get/5")
+      .then((response) => response.json())
+      .then((response) => {
+        setStallionsAmount(response["balance"])
+      })
+
   }, []);
 
   // function to handle button click and add a player
@@ -91,6 +127,7 @@ export default function AccordionUsage() {
     const player = { name, role };
     console.log(player);
     if (team === 1) {
+      // adding the player
       fetch("http://localhost:8080/bcl/bandits/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -99,8 +136,16 @@ export default function AccordionUsage() {
         alert("Player added successfully!");
         location.reload();
       });
-      setBanditsAmount(banditsAmount - amount);
+      // updating the team credit balance
+      let balance = banditsAmount - amount;
+      fetch(`http://localhost:8080/bcl/credit/update/${balance}/${team}`, {
+        method: "PUT"
+      }).then(() => {
+        location.reload();
+      })
+
     } else if (team === 2) {
+      // adding the player
       fetch("http://localhost:8080/bcl/bulls/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -109,8 +154,15 @@ export default function AccordionUsage() {
         alert("Player added successfully!");
         location.reload();
       });
-      setBullsAmount(bullsAmount - amount);
+      // updating the team credit balance
+      let balance = bullsAmount - amount;
+      fetch(`http://localhost:8080/bcl/credit/update/${balance}/${team}`, {
+        method: "PUT"
+      }).then(() => {
+        location.reload();
+      })
     } else if (team === 3) {
+      // adding a player
       fetch("http://localhost:8080/bcl/royals/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -119,8 +171,15 @@ export default function AccordionUsage() {
         alert("Player added successfully!");
         location.reload();
       });
-      setRoyalsAmount(royalsAmount - amount);
+      // updating the team credit balance
+      let balance = royalsAmount - amount;
+      fetch(`http://localhost:8080/bcl/credit/update/${balance}/${team}`, {
+        method: "PUT"
+      }).then(() => {
+        location.reload();
+      })
     } else if (team === 4) {
+      // adding a player
       fetch("http://localhost:8080/bcl/cobras/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -129,8 +188,15 @@ export default function AccordionUsage() {
         alert("Player added successfully!");
         location.reload();
       });
-      setCobrasAmount(cobrasAmount - amount);
+      // updating the team credit balance
+      let balance = cobrasAmount - amount;
+      fetch(`http://localhost:8080/bcl/credit/update/${balance}/${team}`, {
+        method: "PUT"
+      }).then(() => {
+        location.reload();
+      })
     } else if (team === 5) {
+      // adding a player
       fetch("http://localhost:8080/bcl/stallions/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -138,7 +204,13 @@ export default function AccordionUsage() {
       }).then(() => {
         alert("Player added successfully!");
       });
-      setStallionsAmount(stallionsAmount - amount);
+      // updating the team credit balance
+      let balance = stallionsAmount - amount;
+      fetch(`http://localhost:8080/bcl/credit/update/${balance}/${team}`, {
+        method: "PUT"
+      }).then(() => {
+        location.reload();
+      })
     } else {
       alert("Invalid team choice!");
     }
