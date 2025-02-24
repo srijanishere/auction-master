@@ -3,6 +3,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionActions from "@mui/material/AccordionActions";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
+import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import Button from "@mui/material/Button";
@@ -20,6 +21,11 @@ import TableRow from "@mui/material/TableRow";
 import Stack from "@mui/material/Stack";
 import Paper from "@mui/material/Paper";
 import Tooltip from "@mui/joy/Tooltip";
+import BullsLogo from "../assets/bbb_logo.jpeg";
+import BanditsLogo from "../assets/bbt_logo.jpeg";
+import RoyalsLogo from "../assets/brt_logo.jpeg";
+import StallionLogo from "../assets/bss_logo.jpeg";
+import CobrasLogo from "../assets/bsp_logo.jpeg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -88,37 +94,36 @@ export default function AccordionUsage() {
     fetch("http://localhost:8080/bcl/credit/get/1")
       .then((response) => response.json())
       .then((response) => {
-        setBanditsAmount(response["balance"])
-      })
+        setBanditsAmount(response["balance"]);
+      });
 
     // fetch credit record for Big Bulls
     fetch("http://localhost:8080/bcl/credit/get/2")
       .then((response) => response.json())
       .then((response) => {
-        setBullsAmount(response["balance"])
-      })
+        setBullsAmount(response["balance"]);
+      });
 
     // fetch credit record for Royals
     fetch("http://localhost:8080/bcl/credit/get/3")
       .then((response) => response.json())
       .then((response) => {
-        setRoyalsAmount(response["balance"])
-      })
+        setRoyalsAmount(response["balance"]);
+      });
 
     // fetch credit record for Cobras
     fetch("http://localhost:8080/bcl/credit/get/4")
       .then((response) => response.json())
       .then((response) => {
-        setCobrasAmount(response["balance"])
-      })
+        setCobrasAmount(response["balance"]);
+      });
 
     // fetch credit record for Stallions
     fetch("http://localhost:8080/bcl/credit/get/5")
       .then((response) => response.json())
       .then((response) => {
-        setStallionsAmount(response["balance"])
-      })
-
+        setStallionsAmount(response["balance"]);
+      });
   }, []);
 
   // function to handle button click and add a player
@@ -139,11 +144,10 @@ export default function AccordionUsage() {
       // updating the team credit balance
       let balance = banditsAmount - amount;
       fetch(`http://localhost:8080/bcl/credit/update/${balance}/${team}`, {
-        method: "PUT"
+        method: "PUT",
       }).then(() => {
         location.reload();
-      })
-
+      });
     } else if (team === 2) {
       // adding the player
       fetch("http://localhost:8080/bcl/bulls/add", {
@@ -157,10 +161,10 @@ export default function AccordionUsage() {
       // updating the team credit balance
       let balance = bullsAmount - amount;
       fetch(`http://localhost:8080/bcl/credit/update/${balance}/${team}`, {
-        method: "PUT"
+        method: "PUT",
       }).then(() => {
         location.reload();
-      })
+      });
     } else if (team === 3) {
       // adding a player
       fetch("http://localhost:8080/bcl/royals/add", {
@@ -174,10 +178,10 @@ export default function AccordionUsage() {
       // updating the team credit balance
       let balance = royalsAmount - amount;
       fetch(`http://localhost:8080/bcl/credit/update/${balance}/${team}`, {
-        method: "PUT"
+        method: "PUT",
       }).then(() => {
         location.reload();
-      })
+      });
     } else if (team === 4) {
       // adding a player
       fetch("http://localhost:8080/bcl/cobras/add", {
@@ -191,10 +195,10 @@ export default function AccordionUsage() {
       // updating the team credit balance
       let balance = cobrasAmount - amount;
       fetch(`http://localhost:8080/bcl/credit/update/${balance}/${team}`, {
-        method: "PUT"
+        method: "PUT",
       }).then(() => {
         location.reload();
-      })
+      });
     } else if (team === 5) {
       // adding a player
       fetch("http://localhost:8080/bcl/stallions/add", {
@@ -207,10 +211,10 @@ export default function AccordionUsage() {
       // updating the team credit balance
       let balance = stallionsAmount - amount;
       fetch(`http://localhost:8080/bcl/credit/update/${balance}/${team}`, {
-        method: "PUT"
+        method: "PUT",
       }).then(() => {
         location.reload();
-      })
+      });
     } else {
       alert("Invalid team choice!");
     }
@@ -222,15 +226,17 @@ export default function AccordionUsage() {
   };
 
   return (
-    <div style={{ marginTop: "70px", padding: "5px"}}>
-      <Accordion style={{backgroundColor: 'rgba(143, 203, 223, 0.3)'}}>
+    <div style={{ marginTop: "70px", padding: "5px" }}>
+      <Accordion style={{ backgroundColor: "rgb(113, 171, 191)" }}>
         <AccordionSummary
           expandIcon={<ArrowDownwardIcon />}
           aria-controls="panel3-content"
           id="panel3-header"
         >
           <Typography component="span">
-            <h3>Add a player</h3>
+            <h3 style={{ color: "white", fontWeight: "bolder" }}>
+              Add a player
+            </h3>
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -245,6 +251,7 @@ export default function AccordionUsage() {
                 id="outlined-basic"
                 label="Player Name"
                 variant="outlined"
+                color="danger"
                 onChange={(e) => setName(e.target.value)}
                 fullWidth
               />
@@ -307,8 +314,11 @@ export default function AccordionUsage() {
         <AccordionDetails>
           <Stack spacing={5} useFlexGap>
             <Stack direction="row" spacing={2}>
-              <TableContainer component={Paper}>
-                <h3>Benrec Bandits (BBT)</h3>
+              <TableContainer component={Paper} style={{ padding: "10px" }}>
+                <Stack direction={"row"} spacing={5}>
+                  <Avatar src={BanditsLogo} sx={{ width: 56, height: 56 }} />
+                  <h3>Benrec Bandits (BBT)</h3>
+                </Stack>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <caption>
                     <Tooltip title="Amount remaining" variant="plain">
@@ -351,8 +361,11 @@ export default function AccordionUsage() {
                   </TableBody>
                 </Table>
               </TableContainer>
-              <TableContainer component={Paper}>
-                <h3>Benrec Big Bulls (BBB)</h3>
+              <TableContainer component={Paper} style={{ padding: "10px" }}>
+                <Stack direction={"row"} spacing={5}>
+                  <Avatar src={BullsLogo} sx={{ width: 56, height: 56 }} />
+                  <h3>Benrec Big Bulls (BBB)</h3>
+                </Stack>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <caption>
                     <Tooltip title="Amount remaining" variant="plain">
@@ -397,8 +410,11 @@ export default function AccordionUsage() {
               </TableContainer>
             </Stack>
             <Stack direction="row" spacing={2}>
-              <TableContainer component={Paper}>
-                <h3>Benrec Royal Tigers (BRT)</h3>
+              <TableContainer component={Paper} style={{ padding: "10px" }}>
+                <Stack direction={"row"} spacing={5}>
+                  <Avatar src={RoyalsLogo} sx={{ width: 56, height: 56 }} />
+                  <h3>Benrec Royal Tigers (BRT)</h3>
+                </Stack>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <caption>
                     <Tooltip title="Amount remaining" variant="plain">
@@ -441,8 +457,11 @@ export default function AccordionUsage() {
                   </TableBody>
                 </Table>
               </TableContainer>
-              <TableContainer component={Paper}>
-                <h3>Benrec Super Pirates (BSP)</h3>
+              <TableContainer component={Paper} style={{padding: '10px'}}>
+                <Stack direction={"row"} spacing={5}>
+                  <Avatar src={CobrasLogo} sx={{ width: 56, height: 56 }} />
+                  <h3>Benrec Super Pirates (BSP)</h3>
+                </Stack>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <caption>
                     <Tooltip title="Amount remaining" variant="plain">
@@ -487,7 +506,10 @@ export default function AccordionUsage() {
               </TableContainer>
             </Stack>
             <TableContainer component={Paper}>
-              <h3>Benrec Stallions (BSS)</h3>
+            <Stack direction={"row"} spacing={5}>
+                  <Avatar src={StallionLogo} sx={{ width: 56, height: 56 }} />
+                  <h3>Benrec Stallions (BSS)</h3>
+                </Stack>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <caption>
                   <Tooltip title="Amount remaining" variant="plain">
