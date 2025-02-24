@@ -222,8 +222,8 @@ export default function AccordionUsage() {
   };
 
   return (
-    <div style={{ marginTop: "70px", padding: "5px" }}>
-      <Accordion>
+    <div style={{ marginTop: "70px", padding: "5px"}}>
+      <Accordion style={{backgroundColor: 'rgba(143, 203, 223, 0.3)'}}>
         <AccordionSummary
           expandIcon={<ArrowDownwardIcon />}
           aria-controls="panel3-content"
@@ -270,8 +270,8 @@ export default function AccordionUsage() {
               >
                 <MenuItem value={1}>Benrec Bandits</MenuItem>
                 <MenuItem value={2}>Benrec Big Bulls</MenuItem>
-                <MenuItem value={3}>Benrec Royals</MenuItem>
-                <MenuItem value={4}>Benrec Spitting Cobras</MenuItem>
+                <MenuItem value={3}>Benrec Royal Tigers</MenuItem>
+                <MenuItem value={4}>Benrec Super Pirates</MenuItem>
                 <MenuItem value={5}>Benrec Stallions</MenuItem>
               </Select>
             </form>
@@ -308,7 +308,7 @@ export default function AccordionUsage() {
           <Stack spacing={5} useFlexGap>
             <Stack direction="row" spacing={2}>
               <TableContainer component={Paper}>
-                <h4>Benrec Bandits</h4>
+                <h3>Benrec Bandits (BBT)</h3>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <caption>
                     <Tooltip title="Amount remaining" variant="plain">
@@ -352,7 +352,7 @@ export default function AccordionUsage() {
                 </Table>
               </TableContainer>
               <TableContainer component={Paper}>
-                <h4>Benrec Big Bulls</h4>
+                <h3>Benrec Big Bulls (BBB)</h3>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <caption>
                     <Tooltip title="Amount remaining" variant="plain">
@@ -398,7 +398,7 @@ export default function AccordionUsage() {
             </Stack>
             <Stack direction="row" spacing={2}>
               <TableContainer component={Paper}>
-                <h4>Benrec Royals</h4>
+                <h3>Benrec Royal Tigers (BRT)</h3>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <caption>
                     <Tooltip title="Amount remaining" variant="plain">
@@ -442,7 +442,7 @@ export default function AccordionUsage() {
                 </Table>
               </TableContainer>
               <TableContainer component={Paper}>
-                <h4>Benrec Spitting Cobras</h4>
+                <h3>Benrec Super Pirates (BSP)</h3>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <caption>
                     <Tooltip title="Amount remaining" variant="plain">
@@ -487,7 +487,7 @@ export default function AccordionUsage() {
               </TableContainer>
             </Stack>
             <TableContainer component={Paper}>
-              <h4>Benrec Stallion</h4>
+              <h3>Benrec Stallions (BSS)</h3>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <caption>
                   <Tooltip title="Amount remaining" variant="plain">
