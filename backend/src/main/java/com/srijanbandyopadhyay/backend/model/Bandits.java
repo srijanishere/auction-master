@@ -15,6 +15,7 @@ public class Bandits
     private int id;
     private String name;
     private String role;
+    private double amount;
     
     public int getId() {
         return id;
@@ -34,4 +35,11 @@ public class Bandits
     public void setRole(String role) {
         this.role = role;
     }
+    public double getAmount() {
+        return amount;
+    }
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+    
 }

@@ -62,7 +62,7 @@ export default function ButtonAppBar({ pos, bgColor }) {
               <Tooltip title="Balance" variant="outlined">
                 <Button
                   variant="outlined"
-                  style={{ backgroundColor: "white", color: "black", fontSize: "25px"}}
+                  style={{ backgroundColor: "white", color: "black", fontSize: "25px", fontWeight: 'bolder'}}
                 >
                   BBT : {banditsAmount}
                 </Button>
@@ -70,7 +70,7 @@ export default function ButtonAppBar({ pos, bgColor }) {
               <Tooltip title="Balance" variant="outlined">
                 <Button
                   variant="outlined"
-                  style={{ backgroundColor: "white", color: "black", fontSize: "25px" }}
+                  style={{ backgroundColor: "white", color: "black", fontSize: "25px", fontWeight: 'bolder' }}
                 >
                   BBB : {bullsAmount}
                 </Button>
@@ -78,7 +78,7 @@ export default function ButtonAppBar({ pos, bgColor }) {
               <Tooltip title="Balance" variant="outlined">
                 <Button
                   variant="outlined"
-                  style={{ backgroundColor: "white", color: "black", fontSize: "25px" }}
+                  style={{ backgroundColor: "white", color: "black", fontSize: "25px", fontWeight: 'bolder' }}
                 >
                   BRT : {royalsAmount}
                 </Button>
@@ -86,7 +86,7 @@ export default function ButtonAppBar({ pos, bgColor }) {
               <Tooltip title="Balance" variant="outlined">
                 <Button
                   variant="outlined"
-                  style={{ backgroundColor: "white", color: "black", fontSize: "25px" }}
+                  style={{ backgroundColor: "white", color: "black", fontSize: "25px", fontWeight: 'bolder' }}
                 >
                   BSP : {cobrasAmount}
                 </Button>
@@ -94,7 +94,7 @@ export default function ButtonAppBar({ pos, bgColor }) {
               <Tooltip title="Balance" variant="outlined">
                 <Button
                   variant="outlined"
-                  style={{ backgroundColor: "white", color: "black", fontSize: "25px" }}
+                  style={{ backgroundColor: "white", color: "black", fontSize: "25px", fontWeight: 'bolder' }}
                 >
                   BSS : {stallionsAmount}
                 </Button>

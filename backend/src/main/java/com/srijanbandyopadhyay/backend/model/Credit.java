@@ -13,7 +13,6 @@ public class Credit
     private int id;
     private String team;
     private double balance;
-    
     public int getId() {
         return id;
     }

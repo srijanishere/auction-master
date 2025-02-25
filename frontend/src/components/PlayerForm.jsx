@@ -5,6 +5,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
+import { Card, CardContent, CardMedia } from "@material-ui/core/";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import Button from "@mui/material/Button";
 import { Container } from "@material-ui/core";
@@ -32,6 +33,14 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(1),
     },
+    minWidth: 200,
+    margin: 5,
+    backgroundColor: "rgba(255,255,255,0.4)",
+    backgroundImage:
+      "linear-gradient(45deg,rgb(169, 219, 233) 0%, #fad0c4 99%, #fad0c4 100%)",
+    backdropFilter: "blur(40)px",
+    boxShadow: "10px 10px 10px rgba(30,30,30,.1)",
+    borderRadius: 10,
   },
 }));
 export default function AccordionUsage() {
@@ -129,7 +138,7 @@ export default function AccordionUsage() {
   // function to handle button click and add a player
   const addPlayer = (e) => {
     e.preventDefault();
-    const player = { name, role };
+    const player = { name, role, amount };
     console.log(player);
     if (team === 1) {
       // adding the player
@@ -227,7 +236,9 @@ export default function AccordionUsage() {
 
   return (
     <div style={{ marginTop: "70px", padding: "5px" }}>
-      <Accordion style={{ backgroundColor: "rgb(113, 171, 191)" }}>
+      <Accordion
+        style={{ backgroundColor: "rgb(113, 171, 191)", margin: "5px" }}
+      >
         <AccordionSummary
           expandIcon={<ArrowDownwardIcon />}
           aria-controls="panel3-content"
@@ -301,7 +312,7 @@ export default function AccordionUsage() {
           </Button>
         </AccordionActions>
       </Accordion>
-      <Accordion defaultExpanded>
+      <Accordion defaultExpanded style={{ margin: "5px" }}>
         <AccordionSummary
           expandIcon={<ArrowDownwardIcon />}
           aria-controls="panel3-content"
@@ -337,10 +348,10 @@ export default function AccordionUsage() {
                   <TableHead>
                     <TableRow>
                       <TableCell style={{ fontWeight: "bolder" }}>
-                        Player
+                        PLAYER
                       </TableCell>
                       <TableCell align="right" style={{ fontWeight: "bolder" }}>
-                        Role
+                        SOLD AT
                       </TableCell>
                     </TableRow>
                   </TableHead>
@@ -355,7 +366,7 @@ export default function AccordionUsage() {
                         <TableCell component="th" scope="row">
                           {bandit.name}
                         </TableCell>
-                        <TableCell align="right">{bandit.role}</TableCell>
+                        <TableCell align="right">{bandit.amount}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -384,10 +395,10 @@ export default function AccordionUsage() {
                   <TableHead>
                     <TableRow>
                       <TableCell style={{ fontWeight: "bolder" }}>
-                        Player
+                        PLAYER
                       </TableCell>
                       <TableCell align="right" style={{ fontWeight: "bolder" }}>
-                        Role
+                        SOLD AT
                       </TableCell>
                     </TableRow>
                   </TableHead>
@@ -402,7 +413,7 @@ export default function AccordionUsage() {
                         <TableCell component="th" scope="row">
                           {bull.name}
                         </TableCell>
-                        <TableCell align="right">{bull.role}</TableCell>
+                        <TableCell align="right">{bull.amount}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -433,10 +444,10 @@ export default function AccordionUsage() {
                   <TableHead>
                     <TableRow>
                       <TableCell style={{ fontWeight: "bolder" }}>
-                        Player
+                        PLAYER
                       </TableCell>
                       <TableCell align="right" style={{ fontWeight: "bolder" }}>
-                        Role
+                        SOLD AT
                       </TableCell>
                     </TableRow>
                   </TableHead>
@@ -451,13 +462,13 @@ export default function AccordionUsage() {
                         <TableCell component="th" scope="row">
                           {royal.name}
                         </TableCell>
-                        <TableCell align="right">{royal.role}</TableCell>
+                        <TableCell align="right">{royal.amount}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
                 </Table>
               </TableContainer>
-              <TableContainer component={Paper} style={{padding: '10px'}}>
+              <TableContainer component={Paper} style={{ padding: "10px" }}>
                 <Stack direction={"row"} spacing={5}>
                   <Avatar src={CobrasLogo} sx={{ width: 56, height: 56 }} />
                   <h3>Benrec Super Pirates (BSP)</h3>
@@ -480,10 +491,10 @@ export default function AccordionUsage() {
                   <TableHead>
                     <TableRow>
                       <TableCell style={{ fontWeight: "bolder" }}>
-                        Player
+                        PLAYER
                       </TableCell>
                       <TableCell align="right" style={{ fontWeight: "bolder" }}>
-                        Role
+                        SOLD AT
                       </TableCell>
                     </TableRow>
                   </TableHead>
@@ -498,7 +509,7 @@ export default function AccordionUsage() {
                         <TableCell component="th" scope="row">
                           {cobra.name}
                         </TableCell>
-                        <TableCell align="right">{cobra.role}</TableCell>
+                        <TableCell align="right">{cobra.amount}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -506,10 +517,10 @@ export default function AccordionUsage() {
               </TableContainer>
             </Stack>
             <TableContainer component={Paper}>
-            <Stack direction={"row"} spacing={5}>
-                  <Avatar src={StallionLogo} sx={{ width: 56, height: 56 }} />
-                  <h3>Benrec Stallions (BSS)</h3>
-                </Stack>
+              <Stack direction={"row"} spacing={5} style={{ padding: "10px" }}>
+                <Avatar src={StallionLogo} sx={{ width: 56, height: 56 }} />
+                <h3>Benrec Stallions (BSS)</h3>
+              </Stack>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <caption>
                   <Tooltip title="Amount remaining" variant="plain">
@@ -528,10 +539,10 @@ export default function AccordionUsage() {
                 <TableHead>
                   <TableRow>
                     <TableCell style={{ fontWeight: "bolder" }}>
-                      Player
+                      PLAYER
                     </TableCell>
                     <TableCell align="right" style={{ fontWeight: "bolder" }}>
-                      Role
+                      SOLD AT
                     </TableCell>
                   </TableRow>
                 </TableHead>
@@ -546,7 +557,7 @@ export default function AccordionUsage() {
                       <TableCell component="th" scope="row">
                         {stallion.name}
                       </TableCell>
-                      <TableCell align="right">{stallion.role}</TableCell>
+                      <TableCell align="right">{stallion.amount}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -554,14 +565,227 @@ export default function AccordionUsage() {
             </TableContainer>
           </Stack>
         </AccordionDetails>
-        <AccordionActions>
-          <Button
-            style={{ margin: "10px", padding: "5px" }}
-            variant="contained"
-          >
-            END AUCTION
-          </Button>
-        </AccordionActions>
+      </Accordion>
+      <Accordion
+        style={{ backgroundColor: "rgb(113, 171, 191)", margin: "5px" }}
+      >
+        <AccordionSummary
+          expandIcon={<ArrowDownwardIcon />}
+          aria-controls="panel3-content"
+          id="panel3-header"
+        >
+          <Typography component="span">
+            <h3 style={{ color: "white", fontWeight: "bolder" }}>
+              Final Team Sheets
+            </h3>
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Stack direction={"row"}>
+            <Card className={classes.root} style={{ minWidth: "250px" }}>
+              <CardContent>
+                <Typography
+                  style={{
+                    backgroundColor: "rgb(74, 120, 136)",
+                    color: "white",
+                    borderRadius: "10px",
+                    padding: "5px",
+                    boxShadow: "3px 3px rgb(113, 171, 191)",
+                  }}
+                  variant="h5"
+                  component="h5"
+                  gutterBottom
+                >
+                  Benrec Bandits
+                </Typography>
+                <TableContainer>
+                  <Table sx={{ minWidth: 100 }} aria-label="simple table">
+                    <TableBody>
+                      {bandits.map((bandit) => (
+                        <TableRow
+                          key={bandit.name}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell
+                            component="th"
+                            scope="row"
+                            style={{ fontSize: "20px" }}
+                          >
+                            {bandit.name}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </CardContent>
+            </Card>
+            <Card className={classes.root} style={{ minWidth: "250px" }}>
+              <CardContent>
+                <Typography
+                  style={{
+                    backgroundColor: "rgb(74, 120, 136)",
+                    color: "white",
+                    borderRadius: "10px",
+                    padding: "5px",
+                    boxShadow: "3px 3px rgb(113, 171, 191)",
+                  }}
+                  variant="h5"
+                  component="h5"
+                  gutterBottom
+                >
+                  Benrec Big Bulls
+                </Typography>
+                <TableContainer>
+                  <Table sx={{ minWidth: 100 }} aria-label="simple table">
+                    <TableBody>
+                      {bulls.map((bull) => (
+                        <TableRow
+                          key={bull.name}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell
+                            component="th"
+                            scope="row"
+                            style={{ fontSize: "20px" }}
+                          >
+                            {bull.name}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </CardContent>
+            </Card>
+            <Card className={classes.root} style={{ minWidth: "250px" }}>
+              <CardContent>
+                <Typography
+                  style={{
+                    backgroundColor: "rgb(74, 120, 136)",
+                    color: "white",
+                    borderRadius: "10px",
+                    padding: "5px",
+                    boxShadow: "3px 3px rgb(113, 171, 191)",
+                  }}
+                  variant="h5"
+                  component="h5"
+                  gutterBottom
+                >
+                  Benrec Royal Tigers
+                </Typography>
+                <TableContainer>
+                  <Table sx={{ minWidth: 100 }} aria-label="simple table">
+                    <TableBody>
+                      {royals.map((royal) => (
+                        <TableRow
+                          key={royal.name}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell
+                            component="th"
+                            scope="row"
+                            style={{ fontSize: "20px" }}
+                          >
+                            {royal.name}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </CardContent>
+            </Card>
+            <Card className={classes.root} style={{ minWidth: "250px" }}>
+              <CardContent>
+                <Typography
+                  style={{
+                    backgroundColor: "rgb(74, 120, 136)",
+                    color: "white",
+                    borderRadius: "10px",
+                    padding: "5px",
+                    boxShadow: "3px 3px rgb(113, 171, 191)",
+                  }}
+                  variant="h5"
+                  component="h5"
+                  gutterBottom
+                >
+                  Benrec Super Pirates
+                </Typography>
+                <TableContainer>
+                  <Table sx={{ minWidth: 100 }} aria-label="simple table">
+                    <TableBody>
+                      {cobras.map((cobra) => (
+                        <TableRow
+                          key={cobra.name}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell
+                            component="th"
+                            scope="row"
+                            style={{ fontSize: "20px" }}
+                          >
+                            {cobra.name}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </CardContent>
+            </Card>
+            <Card className={classes.root} style={{ minWidth: "250px" }}>
+              <CardContent>
+                <Typography
+                  style={{
+                    backgroundColor: "rgb(74, 120, 136)",
+                    color: "white",
+                    borderRadius: "10px",
+                    padding: "5px",
+                    boxShadow: "3px 3px rgb(113, 171, 191)",
+                  }}
+                  variant="h5"
+                  component="h5"
+                  gutterBottom
+                >
+                  Benrec Stallions
+                </Typography>
+                <TableContainer>
+                  <Table sx={{ minWidth: 100 }} aria-label="simple table">
+                    <TableBody>
+                      {stallions.map((stallion) => (
+                        <TableRow
+                          key={stallion.name}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell
+                            component="th"
+                            scope="row"
+                            style={{ fontSize: "20px" }}
+                          >
+                            {stallion.name}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </CardContent>
+            </Card>
+            
+          </Stack>
+        </AccordionDetails>
+        <AccordionActions></AccordionActions>
       </Accordion>
     </div>
   );

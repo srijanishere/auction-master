@@ -13,6 +13,13 @@ public class SpittingCobras
     private int id;
     private String name;
     private String role;
+    public double getAmount() {
+        return amount;
+    }
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+    private double amount;
     
     public int getId() {
         return id;
