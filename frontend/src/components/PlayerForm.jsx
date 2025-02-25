@@ -338,7 +338,8 @@ export default function AccordionUsage() {
                         style={{
                           fontWeight: "bolder",
                           fontSize: "20px",
-                          color: "red",
+                          color: "white",
+                          backgroundColor: "rgb(237, 110, 110)"
                         }}
                       >
                         Total : {banditsAmount}
@@ -362,11 +363,12 @@ export default function AccordionUsage() {
                         sx={{
                           "&:last-child td, &:last-child th": { border: 0 },
                         }}
+                        
                       >
-                        <TableCell component="th" scope="row">
+                        <TableCell component="th" scope="row" style={{fontSize:"18px"}}>
                           {bandit.name}
                         </TableCell>
-                        <TableCell align="right">{bandit.amount}</TableCell>
+                        <TableCell align="right" style={{fontSize:"18px"}}>{bandit.amount}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -385,7 +387,8 @@ export default function AccordionUsage() {
                         style={{
                           fontWeight: "bolder",
                           fontSize: "20px",
-                          color: "red",
+                          color: "white",
+                          backgroundColor: "rgb(237, 110, 110)"
                         }}
                       >
                         Total : {bullsAmount}
@@ -410,10 +413,10 @@ export default function AccordionUsage() {
                           "&:last-child td, &:last-child th": { border: 0 },
                         }}
                       >
-                        <TableCell component="th" scope="row">
+                        <TableCell component="th" scope="row" style={{fontSize:"18px"}}>
                           {bull.name}
                         </TableCell>
-                        <TableCell align="right">{bull.amount}</TableCell>
+                        <TableCell align="right" style={{fontSize:"18px"}}>{bull.amount}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -434,7 +437,8 @@ export default function AccordionUsage() {
                         style={{
                           fontWeight: "bolder",
                           fontSize: "20px",
-                          color: "red",
+                          color: "white",
+                          backgroundColor: "rgb(237, 110, 110)"
                         }}
                       >
                         Total : {royalsAmount}
@@ -459,10 +463,10 @@ export default function AccordionUsage() {
                           "&:last-child td, &:last-child th": { border: 0 },
                         }}
                       >
-                        <TableCell component="th" scope="row">
+                        <TableCell component="th" scope="row" style={{fontSize:"18px"}}>
                           {royal.name}
                         </TableCell>
-                        <TableCell align="right">{royal.amount}</TableCell>
+                        <TableCell align="right" style={{fontSize:"18px"}}>{royal.amount}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -481,7 +485,8 @@ export default function AccordionUsage() {
                         style={{
                           fontWeight: "bolder",
                           fontSize: "20px",
-                          color: "red",
+                          color: "white",
+                          backgroundColor: "rgb(237, 110, 110)"
                         }}
                       >
                         Total : {cobrasAmount}
@@ -506,10 +511,10 @@ export default function AccordionUsage() {
                           "&:last-child td, &:last-child th": { border: 0 },
                         }}
                       >
-                        <TableCell component="th" scope="row">
+                        <TableCell component="th" scope="row" style={{fontSize:"18px"}}>
                           {cobra.name}
                         </TableCell>
-                        <TableCell align="right">{cobra.amount}</TableCell>
+                        <TableCell align="right" style={{fontSize:"18px"}}>{cobra.amount}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -529,7 +534,8 @@ export default function AccordionUsage() {
                       style={{
                         fontWeight: "bolder",
                         fontSize: "20px",
-                        color: "red",
+                        color: "white",
+                        backgroundColor: "rgb(237, 110, 110)"
                       }}
                     >
                       Total : {stallionsAmount}
@@ -554,10 +560,10 @@ export default function AccordionUsage() {
                         "&:last-child td, &:last-child th": { border: 0 },
                       }}
                     >
-                      <TableCell component="th" scope="row">
+                      <TableCell component="th" scope="row" style={{fontSize:"18px"}}>
                         {stallion.name}
                       </TableCell>
-                      <TableCell align="right">{stallion.amount}</TableCell>
+                      <TableCell align="right" style={{fontSize:"18px"}}>{stallion.amount}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
